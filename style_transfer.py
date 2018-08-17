@@ -43,7 +43,7 @@ class StyleTransfer:
               'save_every': 5,
               'ids': [16, 26],
               'workers':4,
-              'style_image': 'style/franc.jpg',
+              'style_image': 'franc.jpg',
               'save_root': 'franc_style'}
     st = StyleTransfer(params)
     st.train()
