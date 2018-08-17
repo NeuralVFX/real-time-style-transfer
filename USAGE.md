@@ -19,12 +19,12 @@ bash style/get_style_dataset.sh
 
 ## Train The Model
 ```bash
-python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image starry_night.jpg --train_epoch 100  --save_root starry_night
+python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg --train_epoch 100  --save_root starry_night
 ```
 
 ## Continue Training Existing Saved State
 ```bash
-python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image starry_night.jpg --train_epoch 100  --save_root starry_night  --load_state output/starry_night_3.json
+python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg --train_epoch 100  --save_root starry_night  --load_state output/starry_night_3.json
 ```
 
 ## Command Line Arguments
@@ -62,7 +62,7 @@ python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image starry_nig
 
 `style/<style image>`
 
-- For example if you are training `Pascal VOC 2007` training set on `Starry Night``:
+- For example if you are training `Pascal VOC 2007` training set on `Tarentelle`:
 
 Train Dir:
 
@@ -70,7 +70,7 @@ Train Dir:
 
 Style Image:
 
-`style/starry_night.jpg`
+`style/franc.jpg`
 
 ## Output Folder Structure
 
