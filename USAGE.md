@@ -28,7 +28,6 @@ python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image starry_nig
 ```
 
 ## Command Line Arguments
-
 ```
 --dataset, default='VOCdevkit/VOC2007/JPEGImages/', type=str   # Dataset folder name
 --style_image, default='franc.jpg', type=str                   # Style image name
