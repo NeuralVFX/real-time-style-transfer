@@ -14,7 +14,7 @@ bash data/get_test_dataset.sh
 ```
 - Download a style image (e.g. [Francis Picabia - "Tarentelle"](https://en.wikipedia.org/wiki/Abstract_art#/media/File:Francis_Picabia,_1912,_Tarentelle,_oil_on_canvas,_73.6_x_92.1_cm,_Museum_of_Modern_Art,_New_York.jpg)):
 ```bash
-bash style/get_style_dataset.sh
+bash style/get_style_image.sh
 ```
 
 ## Train The Model
