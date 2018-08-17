@@ -28,12 +28,12 @@ class StyleTransfer:
               'batch_size': 4,
               'gen_filters': 128,
               'gen_layers':2,
-              'layers_c' :2,
-              'layers_s' :[3, 8, 15, 22],
+              'vgg_layers_c':2,
+              'vgg_layers_s':[3, 8, 15, 22],
               'style_weight': 10000000000,
               'content_weight': 10000,
               'res_blocks':5,
-              'lr_gen': 1e-3,
+              'lr: 1e-3,
               'test_perc': .1,
               'data_perc': 1,
               'beta1': .5,
@@ -108,14 +108,16 @@ class StyleTransfer:
         self.vgg = n.make_vgg()
         self.vgg.cuda()
 
-        self.cs_loss = n.ContStyleLoss(self.vgg, params['layers_s'],
-                                       self.style, params['content_weight'],
+        self.cs_loss = n.ContStyleLoss(self.vgg,
+                                       params['vgg_layers_s'],
+                                       self.style,
+                                       params['content_weight'],
                                        params['style_weight'],
-                                       params['layers_c'])
+                                       params['vgg_layers_c'])
 
         # Setup optimizers
         self.opt_dict["G"] = optim.Adam(self.model_dict["G"].parameters(),
-                                        lr=params['lr_gen'],
+                                        lr=params['lr'],
                                         betas=(params['beta1'], params['beta2']))
 
         print('Losses Initialized')
