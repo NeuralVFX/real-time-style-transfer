@@ -6,7 +6,7 @@
 - Clone this repo:
 ```bash
 git clone https://github.com/NeuralVFX/real-time-style-transfer.git
-cd pix2pix
+cd real-time-style-transfer
 ```
 - Download the dataset (e.g. [Pascal VOC 2007](http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar)):
 ```bash
