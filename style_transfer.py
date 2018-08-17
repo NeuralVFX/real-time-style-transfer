@@ -30,7 +30,7 @@ class StyleTransfer:
               'gen_layers':2,
               'vgg_layers_c':2,
               'vgg_layers_s':[3, 8, 15, 22],
-              'style_weight': 10000000000,
+              'style_weight': 4000000000,
               'content_weight': 10000,
               'res_blocks':5,
               'lr: 1e-3,
