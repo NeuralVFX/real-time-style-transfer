@@ -48,6 +48,8 @@ python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg 
 --beta1, default=.5, type=float                                # Beta1 value used by optimizer
 --beta2, default=.999, type=float                              # Beta2 value used by optimizer
 --ids, default=[10, 20], type=int                              # Ids which will be indexed into to generate preview images from the validation set
+--save_every, default=60, type=int                             # How many epochs between each model save
+--save_img_every, default=60, type=int                         # How many epochs between saving image
 --save_root, default='franc_style', type=str                   # Prefix for files created by the model under the /output directory
 --load_state, type=str                                         # Optional: filename of state to load and resume training from
 ```

@@ -103,7 +103,7 @@ class StyleTransfer:
         self.vgg = n.make_vgg()
         self.vgg.cuda()
 
-        self.cs_loss = n.ContStyleLoss(self.vgg, self.style, 
+        self.cs_loss = n.ContStyleLoss(self.vgg, self.style,
                                        params['content_weight'],
                                        params['style_weight'],
                                        params['vgg_layers_s'],
@@ -258,13 +258,14 @@ class StyleTransfer:
                 num_iter += 1
 
             # generate test images and save to disk
-            helper.show_test(params,
-                             self.transform,
-                             self.tensor_transform,
-                             self.test_loader,
-                             self.style,
-                             self.model_dict['G'],
-                             save=f'output/{params["save_root"]}_val_{self.current_epoch}.jpg')
+            if self.current_epoch % params["save_img_every"] == 0:
+                helper.show_test(params,
+                                 self.transform,
+                                 self.tensor_transform,
+                                 self.test_loader,
+                                 self.style,
+                                 self.model_dict['G'],
+                                 save=f'output/{params["save_root"]}_val_{self.current_epoch}.jpg')
 
             # run validation set loop to get losses
             self.test_loop()
