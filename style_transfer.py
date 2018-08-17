@@ -100,7 +100,7 @@ class StyleTransfer:
 
         print('Networks Initialized')
         # Setup loss
-        self.style = load.open_style(params["style_image"],
+        self.style = load.open_style(f'style/{params["style_image"]}',
                                      self.transform,
                                      batch_size=params["batch_size"],
                                      size=params["res"]).cuda()
