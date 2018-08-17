@@ -57,8 +57,7 @@ class StyleTransfer:
         self.current_iter = 0
 
         # Setup data loaders
-        self.transform = load.NormDenorm([.485, .456, .406],
-                                         [.229, .224, .225])
+        self.transform = load.NormDenorm([.485, .456, .406], [.229, .224, .225])
 
         self.train_data = load.GenericDataset(params['dataset'],
                                               self.transform,
@@ -73,14 +72,12 @@ class StyleTransfer:
         self.train_loader = torch.utils.data.DataLoader(self.train_data,
                                                         batch_size=params["batch_size"],
                                                         num_workers=params["workers"],
-                                                        shuffle=True,
-                                                        drop_last=True)
+                                                        shuffle=True, drop_last=True)
 
         self.test_loader = torch.utils.data.DataLoader(self.test_data,
                                                        batch_size=params["batch_size"],
                                                        num_workers=params["workers"],
-                                                       shuffle=True,
-                                                       drop_last=True)
+                                                       shuffle=True, drop_last=True)
         print('Data Loaders Initialized')
         # Setup models
         self.model_dict["G"] = n.Generator(layers=params["gen_layers"],
@@ -88,9 +85,7 @@ class StyleTransfer:
                                            channels=params["in_channels"],
                                            res_layers=params["res_blocks"])
 
-        self.tensor_transform = n.TensorTransform(res=params["res"],
-                                                  mean=[.485, .456, .406],
-                                                  std=[.229, .224, .225])
+        self.tensor_transform = n.TensorTransform(res=params["res"], mean=[.485, .456, .406], std=[.229, .224, .225])
         self.tensor_transform.cuda()
 
         for i in self.model_dict.keys():
@@ -108,11 +103,10 @@ class StyleTransfer:
         self.vgg = n.make_vgg()
         self.vgg.cuda()
 
-        self.cs_loss = n.ContStyleLoss(self.vgg,
-                                       params['vgg_layers_s'],
-                                       self.style,
+        self.cs_loss = n.ContStyleLoss(self.vgg, self.style, 
                                        params['content_weight'],
                                        params['style_weight'],
+                                       params['vgg_layers_s'],
                                        params['vgg_layers_c'])
 
         # Setup optimizers

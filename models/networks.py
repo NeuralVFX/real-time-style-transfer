@@ -183,12 +183,12 @@ class SetHook:
 
 class ContStyleLoss(nn.Module):
     # Store Features for style, and calculate style and content loss
-    def __init__(self, m, layer_ids, style_im, ct_wgt, style_wgt, index):
+    def __init__(self, vgg, style_im, ct_wgt, style_wgt, style_layer_ids, content_layer_id):
         super().__init__()
-        self.index = index
-        self.m, self.ct_wgt, self.style_wgt = m, ct_wgt, style_wgt
-        self.sfs = [SetHook(m[i]) for i in layer_ids]
-        m(style_im)
+        self.index = content_layer_id
+        self.m, self.ct_wgt, self.style_wgt = vgg, ct_wgt, style_wgt
+        self.sfs = [SetHook(vgg[i]) for i in style_layer_ids]
+        vgg(style_im)
         self.style_feat = [o.feats.data.clone() for o in self.sfs]
 
     def forward(self, input_img, target_img):
