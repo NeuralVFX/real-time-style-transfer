@@ -59,7 +59,7 @@ class StyleTransfer:
         # Setup data loaders
         self.transform = load.NormDenorm([.485, .456, .406], [.229, .224, .225])
 
-        self.train_data = load.GenericDataset(params['dataset'],
+        self.train_data = load.GenericDataset(f'data/{params["dataset"]}',
                                               self.transform,
                                               output_res=params["res"],
                                               test_perc=params["test_perc"],

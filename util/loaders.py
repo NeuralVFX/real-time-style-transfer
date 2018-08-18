@@ -189,7 +189,7 @@ class GenericDataset(Dataset):
     def __init__(self, path_a, transform, output_res=256, test_perc=.1, data_perc=1):
         self.train = True
         self.transform = transform
-        self.path_list_a = glob.glob(f'/data/{path_a}/*.*')
+        self.path_list_a = glob.glob(f'{path_a}/*.*')
         self.output_res = output_res
         self.default_transform = NormDenorm([.5, .5, .5],
                                             [.5, .5, .5])
