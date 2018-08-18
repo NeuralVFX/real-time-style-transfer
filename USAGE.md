@@ -1,7 +1,7 @@
 
 ## Getting Started
 - Install `pytorch 0.4.0` and dependencies from https://pytorch.org/
-- Install packages `tqdm`, `cv2`, `matplotlib`, `tar`, 'torchvision'
+- Install packages `tqdm`, `cv2`, `matplotlib`, `tar`, `torchvision`
 
 - Clone this repo:
 ```bash
