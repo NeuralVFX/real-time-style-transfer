@@ -31,40 +31,23 @@ class TensorTransform(nn.Module):
         return result
 
 
-class ShavePixel(nn.Module):
-    # Remove one pixel on edge after tranpose
-    def __init__(self, count=1):
-        self.count = count
-        super(ShavePixel, self).__init__()
-
-    def forward(self, x):
-        return x[:, :, :-self.count, :-self.count].contiguous()
-
-
 class ConvTrans(nn.Module):
     # One Block to be used as conv and transpose throughout the model
-    def __init__(self, ic=4, oc=4, kernel_size=4, block_type='res', padding=1, stride=2):
+    def __init__(self, ic=4, oc=4, kernel_size=4, block_type='up', padding=1):
         super(ConvTrans, self).__init__()
         self.block_type = block_type
 
         operations = []
         if self.block_type == 'up':
-            operations += [nn.ConvTranspose2d(in_channels=ic,
-                                              out_channels=oc,
-                                              kernel_size=kernel_size,
-                                              stride=stride,
-                                              bias=False),
-                           ShavePixel(1)]
+            operations += [nn.Upsample(mode='nearest', scale_factor=2),
+                           nn.ReflectionPad2d(padding),
+                           nn.Conv2d(in_channels=ic, out_channels=oc, kernel_size=kernel_size, stride=1, bias=True)]
         elif self.block_type == 'down':
             operations += [nn.ReflectionPad2d(padding),
-                           nn.Conv2d(in_channels=ic,
-                                     out_channels=oc,
-                                     kernel_size=kernel_size,
-                                     stride=stride,
-                                     bias=False)]
+                           nn.Conv2d(in_channels=ic, out_channels=oc, kernel_size=kernel_size, stride=2, bias=True)]
 
-        operations += [nn.LeakyReLU(.2, inplace=True)]
-        operations += [nn.BatchNorm2d(oc)]
+        operations += [nn.InstanceNorm2d(oc, affine=True)]
+        operations += [nn.ReLU(inplace=True)]
 
         self.operations = nn.Sequential(*operations)
 
@@ -83,9 +66,9 @@ class ResBlock(nn.Module):
         operations = []
         operations += [nn.ReflectionPad2d(1)]
         operations += [
-            nn.Conv2d(in_channels=ic, out_channels=oc, padding=0, kernel_size=kernel_size, stride=stride, bias=False)]
-        operations += [nn.LeakyReLU(.2, True)]
-        operations += [nn.BatchNorm2d(oc)]
+            nn.Conv2d(in_channels=ic, out_channels=oc, padding=0, kernel_size=kernel_size, stride=stride, bias=True)]
+        operations += [nn.InstanceNorm2d(oc, affine=True)]
+        operations += [nn.ReLU(inplace=True)]
 
         if use_dropout:
             operations += [nn.Dropout(dropout)]
@@ -93,7 +76,7 @@ class ResBlock(nn.Module):
         operations += [nn.ReflectionPad2d(1)]
         operations += [
             nn.Conv2d(in_channels=ic, out_channels=oc, padding=0, kernel_size=kernel_size, stride=stride, bias=True)]
-        operations += [nn.BatchNorm2d(oc)]
+        operations += [nn.InstanceNorm2d(oc, affine=True)]
 
         self.block = nn.Sequential(*operations)
 
@@ -122,10 +105,12 @@ class Generator(nn.Module):
             filts = int(filts // 2)
 
         # our input and our output
-        inp = [nn.ReflectionPad2d(3),
-               nn.Conv2d(in_channels=channels, out_channels=filts, padding=0, kernel_size=7, stride=1), nn.LeakyReLU()]
-        out = [nn.ReflectionPad2d(3),
-               nn.Conv2d(in_channels=filts, out_channels=channels, padding=0, kernel_size=7, stride=1)]
+        inp = [nn.ReflectionPad2d(4),
+               nn.Conv2d(in_channels=channels, out_channels=filts, padding=0, kernel_size=9, stride=1),
+               nn.InstanceNorm2d(filts, affine=True),
+               nn.ReLU(inplace=True)]
+        out = [nn.ReflectionPad2d(4),
+               nn.Conv2d(in_channels=filts, out_channels=channels, padding=0, kernel_size=9, stride=1)]
 
         operations = inp + operations + out
         self.model = nn.Sequential(*operations)
@@ -136,7 +121,7 @@ class Generator(nn.Module):
 
 ############################################################################
 # VGG Net
-############################################################################    
+############################################################################
 
 
 def make_vgg():
@@ -152,7 +137,7 @@ def make_vgg():
 
 ############################################################################
 # Hook and Losses
-############################################################################    
+############################################################################
 
 
 def gram_mse_loss(mse_input, target):

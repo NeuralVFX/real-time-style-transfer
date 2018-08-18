@@ -78,11 +78,11 @@ Style Image:
 
 - `weights`, `test images` and `loss graph`, are all output to this directory: `output/<save_root>_*.*`
 
-- Loss Graph Example: `output/starry_night_loss.jpg`
-![](output/starry_night_loss.jpg)
+- Loss Graph Example: `output/franc_loss.jpg`
+![](output/franc_loss.jpg)
 
-- Test Image Example (output every loop through dataset): `output/starry_night_test.jpg`
-![](output/starry_night_127_test.jpg)
+- Test Image Example (output every loop through dataset): `output/fran_val_45.jpg`
+![](output/franc_val_45.jpg)
 
 ## Other Notes
 
