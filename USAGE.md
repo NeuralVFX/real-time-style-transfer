@@ -19,12 +19,12 @@ bash style/get_style_image.sh
 
 ## Train The Model
 ```bash
-python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg --train_epoch 100  --save_root starry_night
+python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg --train_epoch 100  --save_root franc
 ```
 
 ## Continue Training Existing Saved State
 ```bash
-python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg --train_epoch 100  --save_root starry_night  --load_state output/starry_night_3.json
+python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg --train_epoch 100  --save_root franc  --load_state output/franc_3.json
 ```
 
 ## Command Line Arguments
