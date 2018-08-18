@@ -90,3 +90,5 @@ Style Image:
 
 - Use a small subset of the overall training by setting `--data_perc` to any value below one
 
+- Training on PASCAL it takes about 40 epochs to get a nice result
+
