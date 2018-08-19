@@ -3,7 +3,7 @@
 
 This is an implementation of Realtime Style-Transfer based on this [paper](https://arxiv.org/pdf/1603.08155)
 
-ALmost any large image dataset would work for this, I've been using [PASCAL VOC](http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar)
+Almost any large image dataset would work for this, I've been using [PASCAL VOC](http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar)
 
 # Code Usage
 
