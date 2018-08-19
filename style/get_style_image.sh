@@ -11,3 +11,7 @@ wget $URL -O $IMG_FILE
 URL=https://cdn.skim.gs/image/upload/v1456338926/msi/picasso-mediterranean-landscape_fdmvxb.jpg
 IMG_FILE=./style/picasso.jpg
 wget $URL -O $IMG_FILE
+
+URL=https://78.media.tumblr.com/4f28a5a6aa02eb14e1999e3856a488cf/tumblr_ox5ygbyuMp1ut0lfho1_500.jpg
+IMG_FILE=./style/van.jpg
+wget $URL -O $IMG_FILE
