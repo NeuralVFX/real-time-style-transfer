@@ -38,8 +38,8 @@ python train.py --dataset VOCdevkit/VOC2007/JPEGImages/ --style_image franc.jpg 
 --res_blocks, default=5, type=int                              # Count res blocks in generator
 --vgg_layers_s', default=[3, 8, 15, 22], type=int              # Layers of VGG to use for style
 --vgg_layers_c', default=2, type=int                           # Layer of VGG to use for content, selected from provided style layers (vgg_layers_s[i])
---style_weight default=4000000000, type=int                    # Multiplier for style loss
---content_weight, default=10000, type=int                      # Multiplier for content loss
+--style_weight default=100000000000, type=int                  # Multiplier for style loss
+--content_weight, default=100000, type=int                     # Multiplier for content loss
 --lr, default=1e-3, type=float                                 # Learning rate
 --train_epoch, default=60, type=int                            # Number epochs to train for
 --res, default=256, type=int                                   # Image Training Size (Images is resized to this value in dataloaders)
