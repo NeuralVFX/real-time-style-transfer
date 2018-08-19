@@ -5,7 +5,7 @@ This is an implementation of Realtime Style-Transfer based on this paper(https:/
 
 The dataset I've done my first test with is [PASCAL VOC](http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar)
 
-# Code usage
+# Code Usage
 
 Usage instructions found here: [user manual page](USAGE.md).
 
