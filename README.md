@@ -1,4 +1,4 @@
-# real-time-style-transfer
+# Real-Time Style Transfer
 Implementation of Real-Time Style Transfer in Pytorch
 
 `STILL IN PROGRESS... ALMOST DONE`
