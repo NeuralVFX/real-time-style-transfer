@@ -16,4 +16,4 @@ Usage instructions found here: [user manual page](USAGE.md).
 # Example Results
 ## Edges2Shoes
 #### (1: Input Image  — 2: Generated Image — 3: Style Image)
-![](examples/example.jpg)
+![](examples/example_r.jpg)
