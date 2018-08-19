@@ -33,7 +33,7 @@ class StyleTransfer:
               'style_weight': 4000000000,
               'content_weight': 10000,
               'res_blocks':5,
-              'lr: 1e-3,
+              'lr': 1e-3,
               'test_perc': .1,
               'data_perc': 1,
               'beta1': .5,
