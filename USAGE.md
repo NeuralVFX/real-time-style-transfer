@@ -79,10 +79,10 @@ Style Image:
 - `weights`, `test images` and `loss graph`, are all output to this directory: `output/<save_root>_*.*`
 
 - Loss Graph Example: `output/franc_loss.jpg`
-![](output/franc_loss.jpg)
+![](output/franc_new_hl_loss.jpg)
 
-- Test Image Example (output every loop through dataset): `output/fran_val_45.jpg`
-![](output/franc_val_45.jpg)
+- Test Image Example (output every loop through dataset): `output/franc_val_60.jpg`
+![](output/franc_new_hl_val_60.jpg)
 
 ## Other Notes
 
@@ -90,5 +90,5 @@ Style Image:
 
 - Use a small subset of the overall training by setting `--data_perc` to any value below one
 
-- Training on PASCAL it takes about 40 epochs to get a nice result
+- Training on PASCAL it takes about 60 epochs to get a nice result
 
