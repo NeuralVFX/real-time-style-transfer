@@ -13,4 +13,4 @@ Usage instructions found here: [user manual page](USAGE.md).
 # Example Results
 ## Pascal VOC
 #### (1: Input Image  — 2: Generated Image — 3: Style Image)
-![](examples/example_r.png)
+![](examples/example_ae.png)
