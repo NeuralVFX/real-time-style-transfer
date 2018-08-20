@@ -33,7 +33,7 @@ def show_test(params, denorm, tensor_norm, dataloader, style, model, save=False)
     # Show and save
     ids_a = params['ids']
     image_grid_len = len(ids_a)
-    fig, ax = plt.subplots(image_grid_len, 3, figsize=(13, 5*image_grid_len))
+    fig, ax = plt.subplots(image_grid_len, 3, figsize=(13, 4.5*image_grid_len))
     count = 0
     model.eval()
     for idx, real in enumerate(dataloader):
